@@ -1,10 +1,18 @@
-import { reactRouter } from "@react-router/dev/vite";
-import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "vite";
+import { reactRouter } from '@react-router/dev/vite'
+import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
+import devtoolsJson from 'vite-plugin-devtools-json'
 
 export default defineConfig({
-  plugins: [tailwindcss(), reactRouter()],
-  resolve: {
-    tsconfigPaths: true,
+  css: {
+    devSourcemap: true
   },
-});
+  server: {
+    port: 3001,
+  },
+  plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), devtoolsJson()],
+  resolve: {
+    tsconfigPaths: true
+  }
+})
